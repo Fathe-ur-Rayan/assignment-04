@@ -1,0 +1,28 @@
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US & Canada)
+Total Physical Memory:     7,835 MB
+Available Physical Memory: 1,585 MB
+Virtual Memory: Max Size:  11,689 MB
+Virtual Memory: Available: 2,703 MB
+Virtual Memory: In Use:    8,986 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              \\DESKTOP-5BBHSSQ
+Hotfix(s):                 5 Hotfix(s) Installed.
+                           [01]: KB5033920
+                           [02]: KB5012170
+                           [03]: KB5027397
+                           [04]: KB5034123
+                           [05]: KB5032393
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Realtek RTL8821CE 802.11ac PCIe Adapter
+                                 Connection Name: Wi-Fi
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     192.168.0.1
+                                 IP address(es)
+                                 [01]: 192.168.0.104
+                                 [02]: fe80::e6f9:d6db:b21d:b3ea
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
