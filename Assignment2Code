@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+class Course {
+private:
+    string courseName;
+    string* students;
+    int numStudents;
+    int maxStudents;
+
+public:
+    
+    Course(const string& name, int maxStudents)
+        : courseName(name), maxStudents(maxStudents), numStudents(0) {
+        students = new string[maxStudents];
+    }
+
+   
+    Course(const Course& other)
+        : courseName(other.courseName), maxStudents(other.maxStudents), numStudents(other.numStudents) {
+        students = new string[maxStudents];
+        for (int i = 0; i < numStudents; ++i) {
+            students[i] = other.students[i];
+        }
+    }
+
+    
+    ~Course() {
+        delete[] students;
+    }
+
+
+    string getCourseName() const {
+        return courseName;
+    }
+
+ 
+    void addStudent(const string& studentName) {
+        if (numStudents < maxStudents) {
+            students[numStudents] = studentName;
+            ++numStudents;
+        }
+        else {
+            cout << "Course is full. Cannot add more students." << endl;
+        }
+    }
+
+    
+    void dropStudent(const std::string& studentName) {
+        for (int i = 0; i < numStudents; ++i) {
+            if (students[i] == studentName) {
+                
+                for (int j = i; j < numStudents - 1; ++j) {
+                    students[j] = students[j + 1];
+                }
+                --numStudents;
+                return;
+            }
+        }
+        cout << "Student not found in the course." << endl;
+    }
+
+    
+    std::string* getStudents() const {
+        return students;
+    }
+
+    
+    int getNumStudents() const {
+        return numStudents;
+    }
+};
+
+int main() {
+    Course math("isl",7);
+    math.addStudent("iffi");
+    math.addStudent("superman");
+    math.addStudent("chahat fateh alikhan");
+
+    
+    Course mathCopy = math;
+
+    
+    math.dropStudent("Bob");
+
+    cout << "Original Math Course Students:" << endl;
+    string* originalStudents = math.getStudents();
+    for (int i = 0; i < math.getNumStudents(); ++i) {
+        std::cout << originalStudents[i] << std::endl;
+    }
+
+   cout << "Deep Copy Math Course Students:" << std::endl;
+    string* copyStudents = mathCopy.getStudents();
+    for (int i = 0; i < mathCopy.getNumStudents(); ++i) {
+        cout << copyStudents[i] << endl;
+    }
+
+    return 0;
+}
