@@ -47,5 +47,5 @@ int main() {
     cout << "Bubble sort time: " << double(end - start) / CLOCKS_PER_SEC << " seconds\n";
     printFirstAndLastTen(vecForBubbleSort);
 
-    return 0;
+    returnÂ 0;
 }
