@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+     
+    virtual double getArea() = 0;
+};
+class Rectangle: public Shape {
+private:
+    double length;
+    double width;
+public:
+    Rectangle(double l, double w) {
+        length = l;
+        width = w;
+    }
+    double getArea() {
+        return length * width;
+    }
+};
+
+class Circle: public Shape {
+private:
+    double radius;
+public:
+    Circle(double r) {
+        radius = r;
+    }
+    double getArea() {
+        return 3.14 * radius * radius;
+    }
+};
+
+int main() {
+    Rectangle Rect(5, 7);
+    cout << "Area of Rectangle: " << Rect.getArea() << endl;
+
+    Circle Cir(4);
+    cout << "Area of Circle: " << Cir.getArea() << endl;
+
+    return 0;
+}
