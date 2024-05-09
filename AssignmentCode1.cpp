@@ -43,5 +43,5 @@ int main() {
 
     displayInventory();
 
-    return 0;
+    returnÂ 0;
 }
