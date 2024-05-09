@@ -1,0 +1,103 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Product {
+private:
+    int productId;
+    string productName;
+    double productPrice; 
+public:
+    Product(int id, const string& name, double p) : productId(id), productName(name), productPrice(p) {}
+
+    void displayDetails() const {
+        cout << "Product ID: " << productId << ", Name: " << productName << ", Price: Rs" << productPrice << endl;
+    }
+
+    double getPrice() const { 
+        return productPrice;
+    }
+};
+
+class ShoppingCart {
+private:
+    static const int MAX_PRODUCTS = 10;
+    Product* products[MAX_PRODUCTS];
+    int numOfProducts;
+
+public:
+    ShoppingCart() : numOfProducts(0) {}
+
+    ~ShoppingCart() {
+        for (int i = 0; i < numOfProducts; ++i) {
+            delete products[i];
+        }
+    }
+
+    void addProduct(Product* product) {
+        if (numOfProducts < MAX_PRODUCTS) {
+            products[numOfProducts++] = product;
+        }
+        else {
+            cout << "Cannot add more products. Cart is full." << endl;
+        }
+    }
+
+    void displayProducts() const {
+        cout << "Products in the Shopping Cart:" << endl;
+        for (int i = 0; i < numOfProducts; ++i) {
+            products[i]->displayDetails();
+        }
+    }
+
+    double calculateTotalCost() const {
+        double totalCost = 0.0;
+        for (int i = 0; i < numOfProducts; ++i) {
+            totalCost += products[i]->getPrice();
+        }
+        return totalCost;
+    }
+};
+
+class User {
+private:
+    int userId;
+    ShoppingCart* shoppingCart;
+
+public:
+    User(int id) : userId(id), shoppingCart(nullptr) {}
+
+    ~User() {
+        delete shoppingCart;
+    }
+
+    void assignShoppingCart(ShoppingCart* cart) {
+        shoppingCart = cart;
+    }
+
+    void displayDetails() const {
+        cout << "User ID: " << userId << endl;
+        if (shoppingCart) {
+            cout << "Shopping Cart Details:" << endl;
+            shoppingCart->displayProducts();
+        }
+        else {
+            cout << "No shopping cart assigned." << endl;
+        }
+    }
+};
+
+int main() {
+    Product* product1 = new Product(1, "book1", 120.0);
+    Product* product2 = new Product(2, "book2", 200.0);
+
+    ShoppingCart cart;
+    cart.addProduct(product1);
+    cart.addProduct(product2);
+
+    User user(1);
+    user.assignShoppingCart(&cart);
+
+    user.displayDetails();
+
+    return 0;
+}
